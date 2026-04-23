@@ -68,7 +68,29 @@ if [ -n "$SHELL_RC" ]; then
         echo "" >> "$SHELL_RC"
         echo "# grugbot420" >> "$SHELL_RC"
         echo "alias grug='~/.grug/start-grug.sh'" >> "$SHELL_RC"
-        echo "  ✅ Added 'grug' alias"
+        echo "  ✅ Added 'grug' alias to $SHELL_RC"
+    fi
+fi
+
+# Fish shell support
+FISH_CONFIG="$HOME/.config/fish/config.fish"
+if [ -f "$FISH_CONFIG" ]; then
+    if ! grep -q "alias grug=" "$FISH_CONFIG"; then
+        echo "" >> "$FISH_CONFIG"
+        echo "# grugbot420" >> "$FISH_CONFIG"
+        echo "alias grug='~/.grug/start-grug.sh'" >> "$FISH_CONFIG"
+        echo "  ✅ Added 'grug' alias to fish config"
+    fi
+fi
+
+# Install grug-cli (zero-dep toolkit)
+echo "  📦 Installing grug-cli..."
+if command -v bun &> /dev/null; then
+    if ! command -v grug-cli &> /dev/null; then
+        bun add -g grug-cli 2>/dev/null || true
+        echo "  ✅ grug-cli installed (run: grug-cli help)"
+    else
+        echo "  ✅ grug-cli already installed"
     fi
 fi
 

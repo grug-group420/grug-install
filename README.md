@@ -67,3 +67,17 @@ rm -rf ~/.grug
 ---
 
 🦴 **grug-group420** | Complexity is the enemy
+
+## What Gets Installed
+
+| Component | What it does |
+|-----------|-------------|
+| `grugbot-server` | Web interface + API for grugbot420 |
+| `grug-cli` | Zero-dep CLI toolkit (`todo`, `ship`, `loc`, `size`, `env`, ...) |
+
+## Shell Support
+
+The installer adds a `grug` alias for:
+- **bash** (`~/.bashrc`)
+- **zsh** (`~/.zshrc`)
+- **fish** (`~/.config/fish/config.fish`)
